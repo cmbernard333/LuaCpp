@@ -1,7 +1,6 @@
 -- A solution contians project, and defines the available configurations
 solution "LuaCpp"
     configurations { "Debug", "Release" }
-
     -- A project defines one build target
     project "LuaCpp"
         -- define where lua is -- MODIFY THIS

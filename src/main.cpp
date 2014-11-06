@@ -1,10 +1,13 @@
-#include "luacfunc.h"
-#include <cstdlib>
+
 extern "C" {
 #include "lua.h"
 #include "lualib.h"
 #include "lauxlib.h"
 }
+
+#include "luaState.h"
+#include <iostream>
+#include <cstdlib>
 
 static int average(lua_State *L) {
     /* get the number of arguments */
@@ -30,17 +33,13 @@ static int average(lua_State *L) {
 /* anything loaded into the lua state can be accessed in lua land */
 int main(int argc, char** argv) {
     /* TODO : abstract lua state into object*/
-    lua_State *L = luaL_newstate(); 
-    /* base libs */
-    luaL_openlibs(L);
+    LuaState L;
     /* register our function */
-    lua_register(L,"average",average);
+    L.registerFunc("average",average);
     /* run the script */
-    luaL_dofile(L,"avg.lua");
-    /* cleanup lua */
-    lua_close(L);
+    L.doFile("lua/avg.lua");
     /* press enter to exit */
-    printf("Press enter to exit...");
+    std::cout<<"Press enter to exit...";
     getchar();
     return 0;
 }
