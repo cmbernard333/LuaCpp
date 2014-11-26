@@ -4,10 +4,10 @@ solution "LuaCpp"
     -- A project defines one build target
     project "LuaCpp"
         -- define where lua is -- MODIFY THIS
-        luapath = "./tp/lua/lua-5.2.3/src"
-        kind "SharedLib"
+        luapath = "./third_party/lua-5.2.3/src"
+        kind "ConsoleApp"
         language "C++"
-        files { "**.h", "**.cpp" }
+        files {  "src/**.cpp" }
         -- the output location
         location "build"
         -- includes 
