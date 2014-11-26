@@ -4,7 +4,7 @@ solution "LuaCpp"
     -- A project defines one build target
     project "LuaCpp"
         -- define where lua is -- MODIFY THIS
-        luapath = "/Users/christian/Documents/Code/lua-5.2.3/src"
+        luapath = "./tp/lua/lua-5.2.3/src"
         kind "SharedLib"
         language "C++"
         files { "**.h", "**.cpp" }
