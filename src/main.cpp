@@ -1,4 +1,4 @@
-#include "luaState.h"
+#include "lua/luaState.h"
 #include <iostream>
 #include <cstdlib>
 
