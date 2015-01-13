@@ -27,6 +27,7 @@ static int average(lua_State *L) {
 int main(int argc, char** argv) {
     /* TODO : abstract lua state into object*/
     LuaState L;
+    std::cout<<"Lua "<<LUA_VN<<std::endl;
     /* register our function */
     L.registerFunc("average",average);
     /* run the script */
