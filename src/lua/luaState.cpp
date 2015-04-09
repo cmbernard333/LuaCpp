@@ -16,9 +16,11 @@ void LuaState::registerCFunc(const std::string name, lua_CFunction func) {
 }
 
 /* register a table of functions to the lua state */
-int LuaState::registerCFuncs(luaL_Reg funcs[]) {
-  luaL_newlib(this->L, funcs);
-  return 1;
+void LuaState::registerCLib(luaL_Reg funcs[]) {
+  lua_newtable(L);
+  luaL_setfuncs(L, funcs, 0);
+  /* push another named table */
+  lua_pushvalue(L, -1);
 }
 
 /* load a file */
@@ -81,4 +83,18 @@ void LuaState::printLuaType(lua_State *L, int type, int index,
 }
 
 /* print the contents of a table */
-void LuaState::printTable(lua_State *L, std::ostream &stream) const {}
+void LuaState::printTable(lua_State *L, std::ostream &stream) const {
+	lua_pushnil(L);
+
+	while(lua_next(L,-2) != 0) {
+		if(lua_istable(L,-1)) {
+			printTable(L,stream);
+		} else {
+			printLuaType(L,lua_type(L,-2),-2,stream);
+			stream << " = ";
+			printLuaType(L,lua_type(L,-1),-1,stream);
+		}
+
+		lua_pop(L,1);
+	}
+}

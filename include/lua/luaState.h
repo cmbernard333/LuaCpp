@@ -29,7 +29,7 @@ public:
   LuaState();
   virtual ~LuaState();
   void registerCFunc(const std::string name, lua_CFunction func);
-  int registerCFuncs(luaL_Reg funcs[]);
+  void registerCLib(luaL_Reg funcs[]);
   void loadFile(const std::string name);
   void doFile(const std::string name);
   void stackDump(std::ostream &stream = std::cout) const;
