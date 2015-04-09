@@ -1,6 +1,9 @@
+# LuaCpp
+Simple C++ wrapper around lua_State to register C++ objects
+
 Requirements:
-1. premake4 w/ vs2013 support - head of 4.x branch built from mercurial
-2. build lua! lua 5.2.3 is included in tp/lua - run make [platform] in lua directory
-3. run premake4 [platform]
+1. download cmake
+2. build lua! download lua 5.2.3 into third_party/ - run make [platform] in lua directory
+3. mkdir build && cd build && cmake ../
 4. make 
 5. profit!
